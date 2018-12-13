@@ -17,27 +17,29 @@ namespace TP04_Project
             InitializeComponent();
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void BtnLoad_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
+       
+        private void ComboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBoxForImageLoaded_Click(object sender, EventArgs e)
+        private void PictureBoxForImageLoaded_Click(object sender, EventArgs e)
         {
 
         }

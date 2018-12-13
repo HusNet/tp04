@@ -44,7 +44,7 @@
             this.btnLoad.TabIndex = 0;
             this.btnLoad.Text = "Load ";
             this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
             // 
             // btnSave
             // 
@@ -54,7 +54,7 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // pictureBoxForImageLoaded
             // 
@@ -64,7 +64,7 @@
             this.pictureBoxForImageLoaded.Size = new System.Drawing.Size(657, 426);
             this.pictureBoxForImageLoaded.TabIndex = 4;
             this.pictureBoxForImageLoaded.TabStop = false;
-            this.pictureBoxForImageLoaded.Click += new System.EventHandler(this.pictureBoxForImageLoaded_Click);
+            this.pictureBoxForImageLoaded.Click += new System.EventHandler(this.PictureBoxForImageLoaded_Click);
             // 
             // comboBoxFilter
             // 
@@ -74,7 +74,7 @@
             this.comboBoxFilter.Size = new System.Drawing.Size(201, 28);
             this.comboBoxFilter.TabIndex = 10;
             this.comboBoxFilter.Text = "Apply Filter";
-            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
+            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilter_SelectedIndexChanged);
             // 
             // comboBoxEdge
             // 
@@ -84,7 +84,7 @@
             this.comboBoxEdge.Size = new System.Drawing.Size(201, 28);
             this.comboBoxEdge.TabIndex = 11;
             this.comboBoxEdge.Text = "Apply Edge";
-            this.comboBoxEdge.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdge_SelectedIndexChanged);
+            this.comboBoxEdge.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEdge_SelectedIndexChanged);
             // 
             // ImageDetectionTP04
             // 
