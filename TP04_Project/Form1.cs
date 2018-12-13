@@ -10,11 +10,36 @@ using System.Windows.Forms;
 
 namespace TP04_Project
 {
-    public partial class Form1 : Form
+    public partial class ImageDetectionTP04 : Form
     {
-        public Form1()
+        public ImageDetectionTP04()
         {
             InitializeComponent();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxForImageLoaded_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
