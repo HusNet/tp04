@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP04_Project
+namespace TP04_Project.DataManagment
 {
-    class DataAccess
+    interface InterfaceFilter
     {
     }
 }

@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP04_Project
+namespace TP04_Project.DataManagment
 {
-    class DataManagment
+    class FilterManager : InterfaceFilter
     {
+
         //Filtres : 
         //Gaetan : rainbow 
         //Aure : Black and white
 
-        //Edge
-        //Gaetan :  Prewitt3X3
-        //Aurelie : Laplacian3x3OfGaussian3x3Filter
+      
     }
 }

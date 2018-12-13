@@ -46,12 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess.cs" />
-    <Compile Include="DataManagment.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="DataAccess\InputManager.cs" />
+    <Compile Include="DataAccess\InterfaceInput.cs" />
+    <Compile Include="DataAccess\InterfaceOutput.cs" />
+    <Compile Include="DataAccess\OutputManager.cs" />
+    <Compile Include="DataManagment\EdgeManager.cs" />
+    <Compile Include="DataManagment\FilterManager.cs" />
+    <Compile Include="DataManagment\InterfaceEdge.cs" />
+    <Compile Include="DataManagment\InterfaceFilter.cs" />
+    <Compile Include="DataManagment\InterfaceUtils.cs" />
+    <Compile Include="DataManagment\UtilsManager.cs" />
+    <Compile Include="Presentation\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Presentation\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -59,7 +67,7 @@
     <Compile Include="Utils\ExtBitmap.cs" />
     <Compile Include="Utils\ImageFilters.cs" />
     <Compile Include="Utils\Matrix.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
