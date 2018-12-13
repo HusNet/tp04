@@ -25,6 +25,7 @@ namespace TP04_Project
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
+            // TODO : Move in DataAccess --->
             OpenFileDialog filedialog = new OpenFileDialog();
             filedialog.Title = "Slect an image file";
             filedialog.Filter = "Images | *.jpg; *.jpeg; *.bmp; *.png";
@@ -41,13 +42,14 @@ namespace TP04_Project
                 SetComboboxEdgeActive(false);
                 SetComboboxFilterActive(true);
             }
-
+            // <---
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (loadedImage != null)
             {
+                // TODO : Move in DataAccess --->
                 SaveFileDialog filedialog = new SaveFileDialog();
                 filedialog.Title = "Location to save file";
                 filedialog.Filter = "Images | *.jpg; *.jpeg; *.bmp; *.png";
@@ -76,6 +78,7 @@ namespace TP04_Project
                     streamWriter.Flush();
                     streamWriter.Close();
                 }
+                // <---
             }
         }
 
@@ -138,13 +141,18 @@ namespace TP04_Project
             comboBoxEdge.SelectedIndex = 0;
             comboBoxFilter.SelectedIndex = 0;
           
+            // TODO : Move to DataManagement --->
             loadedImage = originalImageFromFile.CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
             ApplyPreview();
+            // <---
         }
 
+
+        // TODO : Move to DataManagement --->
         private void ApplyPreview()
         {
             pictureBoxForImageLoaded.Image = loadedImage;
         }
+        // <---
     }
 }
