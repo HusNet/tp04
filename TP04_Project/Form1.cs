@@ -31,11 +31,15 @@ namespace TP04_Project
 
             if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+
                 StreamReader streamReader = new StreamReader(filedialog.FileName);
                 originalImageFromFile = (Bitmap)Image.FromStream(streamReader.BaseStream);
                 streamReader.Close();
 
                 LoadImageFromFile();
+                
+                SetComboboxEdgeActive(false);
+                SetComboboxFilterActive(true);
             }
 
         }
@@ -75,29 +79,64 @@ namespace TP04_Project
             }
         }
 
-
-        private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
         {
+            SetComboboxEdgeActive(false);
+            SetComboboxFilterActive(true);
+            comboBoxEdge.SelectedIndex = 0;
+            comboBoxFilter.SelectedIndex = 0;
 
         }
+        private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFilter.SelectedIndex > 0)
+            {
+                SetComboboxEdgeActive(true);
+            }
+            else
+            {
+                SetComboboxEdgeActive(false);
+            }
+        }
 
-       
         private void ComboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxEdge.SelectedIndex > 0)
+            {
+                SetComboboxFilterActive(false);
+            }
+            else
+            {
+                SetComboboxFilterActive(true);
+            }
         }
 
         private void PictureBoxForImageLoaded_Click(object sender, EventArgs e)
         {
 
         }
+        
 
+
+        // enable the filter combobox if active = true
+        // disable the filter combobox if active = false
+        private void SetComboboxFilterActive(bool actived)
+        {
+            this.comboBoxFilter.Enabled = actived;
+        }
+
+        // enable the edge combobox if active = true
+        // disable the edge combobox if active = false
+        private void SetComboboxEdgeActive(bool actived)
+        {
+            this.comboBoxEdge.Enabled = actived;
+        }
 
 
         private void LoadImageFromFile()
         {
-            //comboBoxEdge.SelectedIndex = 0;
-            //comboBoxFilter.SelectedIndex = 0;
+            comboBoxEdge.SelectedIndex = 0;
+            comboBoxFilter.SelectedIndex = 0;
           
             loadedImage = originalImageFromFile.CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
             ApplyPreview();
