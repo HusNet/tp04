@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP04_Project.DataManagment;
+
+
 
 namespace TP04_Project
 {
@@ -17,6 +20,12 @@ namespace TP04_Project
     {
         private Bitmap originalImageFromFile = null;
         private Bitmap loadedImage = null;
+
+        // bitmap with filter applied
+        private Bitmap currentBitmap = null;
+
+        private InterfaceFilter filter = new Filter();
+        private FilterManager filterManager = new FilterManager();
 
         public ImageDetectionTP04()
         {
@@ -91,7 +100,7 @@ namespace TP04_Project
 
         }
         private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {    
             if (comboBoxFilter.SelectedIndex > 0)
             {
                 SetComboboxEdgeActive(true);
@@ -100,6 +109,12 @@ namespace TP04_Project
             {
                 SetComboboxEdgeActive(false);
             }
+
+            currentBitmap = loadedImage;
+
+            filter.setFilterName(comboBoxFilter.SelectedItem.ToString());
+            currentBitmap = filterManager.ApplyFilter(currentBitmap, filter, true);
+            pictureBoxForImageLoaded.Image = currentBitmap;
         }
 
         private void ComboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)

@@ -8,5 +8,7 @@ namespace TP04_Project.DataManagment
 {
     class UtilsManager : InterfaceUtils
     {
+       
+    
     }
 }

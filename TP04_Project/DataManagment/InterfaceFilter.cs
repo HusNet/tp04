@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataManagment
 {
-    interface InterfaceFilter
+    public interface InterfaceFilter
     {
+
+        string GetFilterName();
+
+        void setFilterName(string filterName);
+
+
     }
 }

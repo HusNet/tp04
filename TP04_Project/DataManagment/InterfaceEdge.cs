@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataManagment
 {
-    interface InterfaceEdge
+    public interface InterfaceEdge
     {
+        string GetEdgeName();
+
+        void setEdgeName(string edgeName);
     }
 }
