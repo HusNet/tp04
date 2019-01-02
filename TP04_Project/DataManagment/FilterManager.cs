@@ -13,14 +13,14 @@ namespace TP04_Project.DataManagment
 
         //Filtres : rainbow - Black and white
 
-        public Bitmap ApplyFilter(Bitmap selectedSource, InterfaceFilter ifilter, bool preview)
+        public Bitmap ApplyFilter(Bitmap selectedSource, InterfaceFilter ifilter)
         {
             Bitmap bitmapApplyFilter = null;
           
             switch (ifilter.GetFilterName())
             {
                 case "None":
-                    // bitmapApplyFilter  = LoadImageFromFile();
+                    bitmapApplyFilter  = selectedSource;
                     break;
 
                 case "Rainbow":

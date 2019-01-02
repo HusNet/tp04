@@ -21,11 +21,14 @@ namespace TP04_Project
         private Bitmap originalImageFromFile = null;
         private Bitmap loadedImage = null;
 
-        // bitmap with filter applied
-        private Bitmap currentBitmap = null;
+        private Bitmap currentBitmapFilter = null;
+        private Bitmap currentBitmapEdge = null;
 
         private InterfaceFilter filter = new Filter();
         private FilterManager filterManager = new FilterManager();
+
+        private InterfaceEdge edge = new Edge();
+        private EdgeManager edgeManager = new EdgeManager();
 
         public ImageDetectionTP04()
         {
@@ -110,11 +113,11 @@ namespace TP04_Project
                 SetComboboxEdgeActive(false);
             }
 
-            currentBitmap = loadedImage;
+            currentBitmapFilter = originalImageFromFile.CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
 
             filter.setFilterName(comboBoxFilter.SelectedItem.ToString());
-            currentBitmap = filterManager.ApplyFilter(currentBitmap, filter, true);
-            pictureBoxForImageLoaded.Image = currentBitmap;
+            currentBitmapFilter = filterManager.ApplyFilter(currentBitmapFilter, filter);
+            pictureBoxForImageLoaded.Image = currentBitmapFilter;
         }
 
         private void ComboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,6 +130,16 @@ namespace TP04_Project
             {
                 SetComboboxFilterActive(true);
             }
+
+            edge.setEdgeName(comboBoxEdge.SelectedItem.ToString());
+            currentBitmapEdge = currentBitmapFilter;
+            currentBitmapEdge = edgeManager.ApplyEdge(currentBitmapEdge, edge);
+            pictureBoxForImageLoaded.Image = currentBitmapEdge;
+
+
+
+
+
         }
 
         private void PictureBoxForImageLoaded_Click(object sender, EventArgs e)
