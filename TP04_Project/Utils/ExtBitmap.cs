@@ -46,6 +46,8 @@ namespace ImageEdgeDetection
             return bitmapResult;
         }
 
+       
+
         private static Bitmap ConvolutionFilter(Bitmap sourceBitmap,
                                              double[,] filterMatrix,
                                                   double factor = 1,
@@ -309,30 +311,6 @@ namespace ImageEdgeDetection
 
             Marshal.Copy(resultBuffer, 0, resultData.Scan0, resultBuffer.Length);
             resultBitmap.UnlockBits(resultData);
-
-            return resultBitmap;
-        }
-
-        //
-        public static Bitmap Laplacian3x3OfGaussian3x3Filter(this Bitmap sourceBitmap)
-        {
-            Bitmap resultBitmap = ExtBitmap.ConvolutionFilter(sourceBitmap,
-                                   Matrix.Gaussian3x3, 1.0 / 16.0, 0, true);
-
-            resultBitmap = ExtBitmap.ConvolutionFilter(resultBitmap,
-                                 Matrix.Laplacian3x3, 1.0, 0, false);
-
-            return resultBitmap;
-        }
-
-       
-        public static Bitmap PrewittFilter(this Bitmap sourceBitmap,
-                                               bool grayscale = true)
-        {
-            Bitmap resultBitmap = ExtBitmap.ConvolutionFilter(sourceBitmap,
-                                               Matrix.Prewitt3x3Horizontal,
-                                                 Matrix.Prewitt3x3Vertical,
-                                                        1.0, 0, grayscale);
 
             return resultBitmap;
         }

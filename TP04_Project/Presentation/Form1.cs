@@ -73,7 +73,7 @@ namespace TP04_Project
 
             currentBitmapFilter = inputManager.GetOriginalImageFromFile().CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
 
-            filter.setFilterName(comboBoxFilter.SelectedItem.ToString());
+            filter.SetFilterName(comboBoxFilter.SelectedItem.ToString());
             currentBitmapFilter = filterManager.ApplyFilter(currentBitmapFilter, filter);
             pictureBoxForImageLoaded.Image = currentBitmapFilter;
         }
@@ -89,7 +89,7 @@ namespace TP04_Project
                 SetComboboxFilterActive(true);
             }
 
-            edge.setEdgeName(comboBoxEdge.SelectedItem.ToString());
+            edge.SetEdgeName(comboBoxEdge.SelectedItem.ToString());
             currentBitmapEdge = currentBitmapFilter;
             currentBitmapEdge = edgeManager.ApplyEdge(currentBitmapEdge, edge);
             pictureBoxForImageLoaded.Image = currentBitmapEdge;

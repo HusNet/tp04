@@ -78,7 +78,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ExtBitmap.cs" />
-    <Compile Include="Utils\ImageFilters.cs" />
     <Compile Include="Utils\Matrix.cs" />
     <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

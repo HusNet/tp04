@@ -11,26 +11,26 @@ namespace TP04_Project.DataManagment
     public class EdgeManager
     {
 
-        //Edge   Prewitt3X3 Laplacian3x3OfGaussian3x3Filter
+        //Edge prewitt and  Kirsch
         public Bitmap ApplyEdge(Bitmap selectedSource, InterfaceEdge iEdge)
         {
-            Bitmap bitmapApplyEdger = null;
+            Bitmap bitmapApplyEdge = null;
 
             switch (iEdge.GetEdgeName())
             {
                 case "None":
-                    bitmapApplyEdger = selectedSource;
+                    bitmapApplyEdge = selectedSource;
                     break;
 
                 case "Prewitt":
-                    bitmapApplyEdger = selectedSource.PrewittFilter(false);
+                    bitmapApplyEdge = iEdge.PrewittEdge(selectedSource);
                     break;
 
-                case "Laplacian 3x3 of Gaussian 3x3":
-                    bitmapApplyEdger = selectedSource.Laplacian3x3OfGaussian3x3Filter();
+                case "Kirsch":
+                    bitmapApplyEdge = iEdge.KirschEdge(selectedSource);
                     break;
             }
-            return bitmapApplyEdger;
+            return bitmapApplyEdge;
         }
 
 

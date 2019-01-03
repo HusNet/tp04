@@ -93,7 +93,7 @@
             this.comboBoxEdge.Items.AddRange(new object[] {
             "None",
             "Prewitt",
-            "Laplacian 3x3 of Gaussian 3x3"});
+            "Kirsch"});
             this.comboBoxEdge.Location = new System.Drawing.Point(475, 516);
             this.comboBoxEdge.Name = "comboBoxEdge";
             this.comboBoxEdge.Size = new System.Drawing.Size(194, 28);

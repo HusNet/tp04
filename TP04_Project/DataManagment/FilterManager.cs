@@ -24,11 +24,11 @@ namespace TP04_Project.DataManagment
                     break;
 
                 case "Rainbow":
-                    bitmapApplyFilter = ImageFilters.RainbowFilter(selectedSource);
+                    bitmapApplyFilter = ifilter.RainbowFilter(selectedSource);
                     break;
 
                 case "Black and White":
-                    bitmapApplyFilter = ImageFilters.BlackWhite(selectedSource);
+                    bitmapApplyFilter = ifilter.BlackAndWhiteFilter(selectedSource);
                     break;
             }
             return bitmapApplyFilter;
