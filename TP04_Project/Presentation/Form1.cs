@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP04_Project.DataAccess;
 using TP04_Project.DataManagment;
 
 
@@ -18,7 +19,6 @@ namespace TP04_Project
 {
     public partial class ImageDetectionTP04 : Form
     {
-        private Bitmap originalImageFromFile = null;
         private Bitmap loadedImage = null;
 
         private Bitmap currentBitmapFilter = null;
@@ -30,6 +30,12 @@ namespace TP04_Project
         private InterfaceEdge edge = new Edge();
         private EdgeManager edgeManager = new EdgeManager();
 
+        private IInterfaceInOut input = new Input();
+        private InputManager inputManager = new InputManager();
+
+        private IInterfaceInOut output = new Output();
+        private OutputManager outputManager = new OutputManager();
+
         public ImageDetectionTP04()
         {
             InitializeComponent();
@@ -37,71 +43,23 @@ namespace TP04_Project
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            // TODO : Move in DataAccess --->
-            OpenFileDialog filedialog = new OpenFileDialog();
-            filedialog.Title = "Slect an image file";
-            filedialog.Filter = "Images | *.jpg; *.jpeg; *.bmp; *.png";
-
-            if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            loadedImage = inputManager.LoadImageFromDisk(input, pictureBoxForImageLoaded);
+            if (loadedImage != null)
             {
-
-                StreamReader streamReader = new StreamReader(filedialog.FileName);
-                originalImageFromFile = (Bitmap)Image.FromStream(streamReader.BaseStream);
-                streamReader.Close();
-
-                LoadImageFromFile();
-                
-                SetComboboxEdgeActive(false);
-                SetComboboxFilterActive(true);
+                Clear();
             }
-            // <---
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (loadedImage != null)
-            {
-                // TODO : Move in DataAccess --->
-                SaveFileDialog filedialog = new SaveFileDialog();
-                filedialog.Title = "Location to save file";
-                filedialog.Filter = "Images | *.jpg; *.jpeg; *.bmp; *.png";
-
-                if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    String fileExtension = Path.GetExtension(filedialog.FileName).ToUpper();
-                    ImageFormat imgFormat;
-
-                    switch (fileExtension)
-                    {
-                        case "BMP":
-                            imgFormat = ImageFormat.Bmp;
-                            break;
-                        case "JPG":
-                            imgFormat = ImageFormat.Jpeg;
-                            break;
-                        case "PNG":
-                        default:
-                            imgFormat = ImageFormat.Png;
-                            break;
-                    }
-
-                    StreamWriter streamWriter = new StreamWriter(filedialog.FileName, false);
-                    loadedImage.Save(streamWriter.BaseStream, imgFormat);
-                    streamWriter.Flush();
-                    streamWriter.Close();
-                }
-                // <---
-            }
+            outputManager.SaveImageToDisk(pictureBoxForImageLoaded.Image, output);
         }
 
         private void BtnClear_Click(object sender, EventArgs e)
         {
-            SetComboboxEdgeActive(false);
-            SetComboboxFilterActive(true);
-            comboBoxEdge.SelectedIndex = 0;
-            comboBoxFilter.SelectedIndex = 0;
-
+            Clear();
         }
+
         private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {    
             if (comboBoxFilter.SelectedIndex > 0)
@@ -113,7 +71,7 @@ namespace TP04_Project
                 SetComboboxEdgeActive(false);
             }
 
-            currentBitmapFilter = originalImageFromFile.CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
+            currentBitmapFilter = inputManager.GetOriginalImageFromFile().CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
 
             filter.setFilterName(comboBoxFilter.SelectedItem.ToString());
             currentBitmapFilter = filterManager.ApplyFilter(currentBitmapFilter, filter);
@@ -162,25 +120,13 @@ namespace TP04_Project
         {
             this.comboBoxEdge.Enabled = actived;
         }
-
-
-        private void LoadImageFromFile()
+        
+        private void Clear()
         {
+            SetComboboxEdgeActive(false);
+            SetComboboxFilterActive(true);
             comboBoxEdge.SelectedIndex = 0;
             comboBoxFilter.SelectedIndex = 0;
-          
-            // TODO : Move to DataManagement --->
-            loadedImage = originalImageFromFile.CopyToSquareCanvas(pictureBoxForImageLoaded.Width);
-            ApplyPreview();
-            // <---
         }
-
-
-        // TODO : Move to DataManagement --->
-        private void ApplyPreview()
-        {
-            pictureBoxForImageLoaded.Image = loadedImage;
-        }
-        // <---
     }
 }

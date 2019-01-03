@@ -56,9 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Input.cs" />
     <Compile Include="DataAccess\InputManager.cs" />
-    <Compile Include="DataAccess\InterfaceInput.cs" />
-    <Compile Include="DataAccess\InterfaceOutput.cs" />
+    <Compile Include="DataAccess\InterfaceInOut.cs" />
+    <Compile Include="DataAccess\Output.cs" />
     <Compile Include="DataAccess\OutputManager.cs" />
     <Compile Include="DataManagment\Edge.cs" />
     <Compile Include="DataManagment\EdgeManager.cs" />
