@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TP04_Project.DataAccess
 {
-    class InputManager
+    public class InputManager
     {
         private Bitmap loadedImage;
         private Bitmap originalImageFromFile;
