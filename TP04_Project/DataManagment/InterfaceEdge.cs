@@ -9,6 +9,7 @@ namespace TP04_Project.DataManagment
 {
     public interface InterfaceEdge
     {
+
         string GetEdgeName();
 
         void SetEdgeName(string edgeName);
@@ -16,6 +17,15 @@ namespace TP04_Project.DataManagment
         Bitmap PrewittEdge(Bitmap selectedSource, bool grayscale = true);
 
         Bitmap KirschEdge(Bitmap selectedSource, bool grayscale = true);
-        
+
+        double[,] GetPrewitt3x3Horizontal();
+
+        double[,] GetPrewitt3x3Vertical();
+
+        double[,] GetKirsch3x3Horizontal();
+
+        double[,] GetKirsch3x3Vertical();
+
+
     }
 }
