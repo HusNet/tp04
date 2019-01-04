@@ -16,5 +16,6 @@ namespace TP04_Project.DataManagment
         Bitmap PrewittEdge(Bitmap selectedSource, bool grayscale = true);
 
         Bitmap KirschEdge(Bitmap selectedSource, bool grayscale = true);
+        
     }
 }
