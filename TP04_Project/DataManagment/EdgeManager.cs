@@ -16,20 +16,29 @@ namespace TP04_Project.DataManagment
         {
             Bitmap bitmapApplyEdge = null;
 
-            switch (iEdge.GetEdgeName())
+            try
             {
-                case "None":
-                    bitmapApplyEdge = selectedSource;
-                    break;
+                switch (iEdge.GetEdgeName())
+                {
+                    case "None":
+                        bitmapApplyEdge = selectedSource;
+                        break;
 
-                case "Prewitt":
-                    bitmapApplyEdge = iEdge.PrewittEdge(selectedSource);
-                    break;
+                    case "Prewitt":
+                        bitmapApplyEdge = iEdge.PrewittEdge(selectedSource);
+                        break;
 
-                case "Kirsch":
-                    bitmapApplyEdge = iEdge.KirschEdge(selectedSource);
-                    break;
+                    case "Kirsch":
+                        bitmapApplyEdge = iEdge.KirschEdge(selectedSource);
+                        break;
+                }
             }
+            catch (Exception e)
+            {
+                bitmapApplyEdge = selectedSource;
+                System.Diagnostics.Debug.Write(e);
+            }
+                
             return bitmapApplyEdge;
         }
 

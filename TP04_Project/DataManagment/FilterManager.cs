@@ -16,21 +16,30 @@ namespace TP04_Project.DataManagment
         public Bitmap ApplyFilter(Bitmap selectedSource, IInterfaceFilter ifilter)
         {
             Bitmap bitmapApplyFilter = null;
-          
-            switch (ifilter.GetFilterName())
-            {
-                case "None":
-                    bitmapApplyFilter  = selectedSource;
-                    break;
 
-                case "Rainbow":
-                    bitmapApplyFilter = ifilter.RainbowFilter(selectedSource);
-                    break;
+            try {
+                switch (ifilter.GetFilterName())
+                {
+                    case "None":
+                        bitmapApplyFilter = selectedSource;
+                        break;
 
-                case "Black and White":
-                    bitmapApplyFilter = ifilter.BlackAndWhiteFilter(selectedSource);
-                    break;
+                    case "Rainbow":
+                        bitmapApplyFilter = ifilter.RainbowFilter(selectedSource);
+                        break;
+
+                    case "Black and White":
+                        bitmapApplyFilter = ifilter.BlackAndWhiteFilter(selectedSource);
+                        break;
+                }
+
             }
+            catch (Exception e)
+            {
+                bitmapApplyFilter = selectedSource;
+                System.Diagnostics.Debug.Write(e);
+            }
+           
             return bitmapApplyFilter;
         }
     }
