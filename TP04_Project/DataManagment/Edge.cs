@@ -8,7 +8,7 @@ using ImageEdgeDetection;
 
 namespace TP04_Project.DataManagment
 {
-    public class Edge : InterfaceEdge {
+    public class Edge : IInterfaceEdge {
         private string edgeName;
 
         public string GetEdgeName()

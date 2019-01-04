@@ -65,10 +65,8 @@
     <Compile Include="DataManagment\EdgeManager.cs" />
     <Compile Include="DataManagment\Filter.cs" />
     <Compile Include="DataManagment\FilterManager.cs" />
-    <Compile Include="DataManagment\InterfaceEdge.cs" />
-    <Compile Include="DataManagment\InterfaceFilter.cs" />
-    <Compile Include="DataManagment\InterfaceUtils.cs" />
-    <Compile Include="DataManagment\UtilsManager.cs" />
+    <Compile Include="DataManagment\IInterfaceEdge.cs" />
+    <Compile Include="DataManagment\IInterfaceFilter.cs" />
     <Compile Include="Presentation\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

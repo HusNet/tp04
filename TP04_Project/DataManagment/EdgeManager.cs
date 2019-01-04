@@ -12,7 +12,7 @@ namespace TP04_Project.DataManagment
     {
 
         //Edge prewitt and  Kirsch
-        public Bitmap ApplyEdge(Bitmap selectedSource, InterfaceEdge iEdge)
+        public Bitmap ApplyEdge(Bitmap selectedSource, IInterfaceEdge iEdge)
         {
             Bitmap bitmapApplyEdge = null;
 

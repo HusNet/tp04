@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataManagment
 {
-    public class Filter : InterfaceFilter
+    public class Filter : IInterfaceFilter
     {
         private string filterName;
 
