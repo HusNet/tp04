@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\Input.cs" />
     <Compile Include="DataAccess\InputManager.cs" />
-    <Compile Include="DataAccess\InterfaceInOut.cs" />
+    <Compile Include="DataAccess\IInterfaceInOut.cs" />
     <Compile Include="DataAccess\Output.cs" />
     <Compile Include="DataAccess\OutputManager.cs" />
     <Compile Include="DataManagment\Edge.cs" />

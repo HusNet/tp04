@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TP04_Project.DataAccess
 {
-    class OutputManager
+    public class OutputManager
     {
 
         public void SaveImageToDisk(Image loadedImage, IInterfaceInOut output)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataAccess
 {
-    interface IInterfaceInOut
+    public interface IInterfaceInOut
     {
         string GetDialogTitle();
 

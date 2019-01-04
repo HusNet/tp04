@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataAccess
 {
-    class Input : IInterfaceInOut
+    public class Input : IInterfaceInOut
     {
         private String DialogTitle = "Select an image file";
         private String DialogFilter = "Images | *.jpg; *.jpeg; *.bmp; *.png";

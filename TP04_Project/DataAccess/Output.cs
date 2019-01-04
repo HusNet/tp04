@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataAccess
 {
-    class Output : IInterfaceInOut
+    public class Output : IInterfaceInOut
     {
         private String DialogTitle = "Location to save file";
         private String DialogFilter = "Images | *.jpg; *.jpeg; *.bmp; *.png";
