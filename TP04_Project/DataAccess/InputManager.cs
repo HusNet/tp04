@@ -35,6 +35,10 @@ namespace TP04_Project.DataAccess
                 LoadImageFromFile();
                
             }
+            else
+            {
+                throw new Exception("User cancelled image selection dialog.");
+            }
 
             return loadedImage;
         }

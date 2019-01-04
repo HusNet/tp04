@@ -43,10 +43,14 @@ namespace TP04_Project
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            loadedImage = inputManager.LoadImageFromDisk(input, pictureBoxForImageLoaded);
-            if (loadedImage != null)
+            try
             {
+                loadedImage = inputManager.LoadImageFromDisk(input, pictureBoxForImageLoaded);
                 Clear();
+            }
+            catch (Exception dialogCancelled)
+            {
+                System.Diagnostics.Debug.WriteLine(dialogCancelled.Message);
             }
         }
 
