@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataManagment
 {
-    public interface InterfaceEdge
+    public interface IInterfaceEdge
     {
         string GetEdgeName();
 

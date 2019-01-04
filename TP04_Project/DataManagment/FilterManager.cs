@@ -13,7 +13,7 @@ namespace TP04_Project.DataManagment
 
         //Filtres : rainbow - Black and white
 
-        public Bitmap ApplyFilter(Bitmap selectedSource, InterfaceFilter ifilter)
+        public Bitmap ApplyFilter(Bitmap selectedSource, IInterfaceFilter ifilter)
         {
             Bitmap bitmapApplyFilter = null;
           

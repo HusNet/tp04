@@ -24,10 +24,10 @@ namespace TP04_Project
         private Bitmap currentBitmapFilter = null;
         private Bitmap currentBitmapEdge = null;
 
-        private InterfaceFilter filter = new Filter();
+        private IInterfaceFilter filter = new Filter();
         private FilterManager filterManager = new FilterManager();
 
-        private InterfaceEdge edge = new Edge();
+        private IInterfaceEdge edge = new Edge();
         private EdgeManager edgeManager = new EdgeManager();
 
         private IInterfaceInOut input = new Input();
