@@ -63,14 +63,22 @@ namespace TP04_Project.DataManagment
         {
             int rgb;
             Color c;
-
-            for (int y = 0; y < selectedSource.Height; y++)
-                for (int x = 0; x < selectedSource.Width; x++)
-                {
-                    c = selectedSource.GetPixel(x, y);
-                    rgb = (int)((c.R + c.G + c.B) / 3);
-                    selectedSource.SetPixel(x, y, Color.FromArgb(rgb, rgb, rgb));
-                }
+            try
+            {
+                for (int y = 0; y < selectedSource.Height; y++)
+                    for (int x = 0; x < selectedSource.Width; x++)
+                    {
+                        c = selectedSource.GetPixel(x, y);
+                        rgb = (int)((c.R + c.G + c.B) / 3);
+                        selectedSource.SetPixel(x, y, Color.FromArgb(rgb, rgb, rgb));
+                    }
+            }
+            catch (Exception e) {
+                System.Diagnostics.Debug.WriteLine("Image is null");
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return null;
+            }
+          
             return selectedSource;
         }
     }

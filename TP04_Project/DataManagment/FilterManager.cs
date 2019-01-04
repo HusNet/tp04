@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ImageEdgeDetection;
+using System.Drawing;
 
 namespace TP04_Project.DataManagment
 {

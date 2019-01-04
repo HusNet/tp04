@@ -17,6 +17,10 @@ namespace TP04_Project.DataManagment
             return edgeName;
         }
 
+        public void SetEdgeName(string edgeName)
+        {
+            this.edgeName = edgeName;
+        }
 
         public Bitmap KirschEdge(Bitmap selectedSource, bool grayscale = true)
         {
@@ -39,10 +43,7 @@ namespace TP04_Project.DataManagment
             return resultBitmap;
         }
 
-        public void SetEdgeName(string edgeName)
-        {
-            this.edgeName = edgeName;
-        }
+      
 
         public double[,] GetPrewitt3x3Horizontal()
         {

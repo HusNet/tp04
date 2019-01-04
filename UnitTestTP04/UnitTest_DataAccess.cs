@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestTP04
 {
     [TestClass]
-    class UnitTest_DataAccess
+    public class UnitTest_DataAccess
     {
         [TestMethod]
         public void TestMethod1()
