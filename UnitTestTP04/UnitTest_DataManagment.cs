@@ -2,9 +2,7 @@
 using System.Drawing;
 using TP04_Project.DataManagment;
 using NSubstitute;
-using TP04_Project.DataAccess;
 using System.IO;
-using System;
 
 namespace UnitTestTP04
 {

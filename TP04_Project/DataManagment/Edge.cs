@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 using ImageEdgeDetection;
 
 namespace TP04_Project.DataManagment
