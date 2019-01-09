@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 
 namespace TP04_Project.DataAccess
 {
+
+    // This Interface is for the input and output dialog box
     public interface IInterfaceInOut
     {
-        string GetDialogTitle();
 
+        /*
+         * Getter and Setter for DialogTitle
+         */
+        string GetDialogTitle();
+        
         void SetDialogTitle(string dialogTitle);
 
 
+        /*
+         * Getter and Setter for DialogFilter
+         */
         string GetDialogFilter();
-
-        void SetDialogFilter(string dialogTitle);
+        
+        void SetDialogFilter(string dialogFilter);
 
 
 

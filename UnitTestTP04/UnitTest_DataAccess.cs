@@ -7,12 +7,21 @@ using TP04_Project.DataAccess;
 
 namespace UnitTestTP04
 {
+    /* 
+     * This is a test calss for the input and output
+     * It will test all functionalities related the input and output
+     * and the Interface which concerns them with NSubstitute
+     */
     [TestClass]
     public class UnitTest_DataAccess
     {
 
         private TestContext testContextInstance;
-
+        
+        /*  
+         *  Gets or sets the test context which provides
+         *  information about and functionality for the current test run.
+         */
         public TestContext TestContext
         {
             get
@@ -27,12 +36,15 @@ namespace UnitTestTP04
 
         public TestContext TestContextInstance { get; set; }
 
+        // instanciations of classes
         private Input input = new Input();
         private Output output = new Output();
         private InputManager inManager = new InputManager();
         private OutputManager outManager = new OutputManager();
 
-
+        /*
+         *  Testing input Dialog Title Getter/Setter
+         */
         [TestMethod]
         public void TestInputDialogTitle()
         {
@@ -47,7 +59,10 @@ namespace UnitTestTP04
             Assert.AreEqual(input.GetDialogTitle(), inOut.GetDialogTitle());
 
         }
-
+        
+        /*
+         *  Testing input Dialog Filter Getter/Setter
+         */
         [TestMethod]
         public void TestInputDialogFilter()
         {
@@ -62,7 +77,9 @@ namespace UnitTestTP04
             Assert.AreEqual(input.GetDialogFilter(), inOut.GetDialogFilter());
         }
 
-
+        /*
+         *  Testing output Dialog Title Getter/Setter
+         */
         [TestMethod]
         public void TestOutputDialogTitle()
         {
@@ -78,6 +95,9 @@ namespace UnitTestTP04
 
         }
 
+        /*
+         *  Testing output Dialog Filter Getter/Setter
+         */
         [TestMethod]
         public void TestOutputDialogFilter()
         {
@@ -124,7 +144,7 @@ namespace UnitTestTP04
         /*
          * User need select an image and to save the image in the interaction dialog box 
          * 
-         * Run it 3 times with the 3 different formats to test it 100%
+         * To cover 100% of code this method needs to be run 3 time with the 3 different formats in the output dialog box 
          */
         [TestMethod]
         public void TestOutputManagerSaveImageToDisk()

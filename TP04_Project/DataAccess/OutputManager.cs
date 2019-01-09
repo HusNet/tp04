@@ -9,6 +9,9 @@ namespace TP04_Project.DataAccess
     public class OutputManager
     {
 
+        /*
+         *   Open the dialog box to let user save the picture
+         */
         public void SaveImageToDisk(Image loadedImage, IInterfaceInOut output)
         {
 
@@ -17,9 +20,11 @@ namespace TP04_Project.DataAccess
                 Title = output.GetDialogTitle(),
                 Filter = output.GetDialogFilter()
             };
-
+            
+            // check if valid input 
             if (filedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                // select right extension
                 String fileExtension = Path.GetExtension(filedialog.FileName).ToUpper();
                 ImageFormat imgFormat;
 
@@ -37,6 +42,7 @@ namespace TP04_Project.DataAccess
                         break;
                 }
 
+                // export image
                 StreamWriter streamWriter = new StreamWriter(filedialog.FileName, false);
                 loadedImage.Save(streamWriter.BaseStream, imgFormat);
                 streamWriter.Flush();
