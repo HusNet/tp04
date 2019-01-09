@@ -44,6 +44,8 @@ namespace TP04_Project
             {
                 loadedImage = inputManager.LoadImageFromDisk(input, pictureBoxForImageLoaded);
                 Clear();
+                SetButtonClearActive(true);
+                SetButtonSaveActive(true);
             }
             catch (Exception dialogCancelled)
             {
@@ -143,6 +145,17 @@ namespace TP04_Project
 
         }
 
+        // When the user click on the Clear button
+        // It will set the two combobox on 'None'
+        // Enable the filter combobox and disable the edge combobox
+        private void Clear()
+        {
+            SetComboboxEdgeActive(false);
+            SetComboboxFilterActive(true);
+            comboBoxEdge.SelectedIndex = 0;
+            comboBoxFilter.SelectedIndex = 0;
+        }
+
         // Enable and disable the filter combobox for the user 
         // Enable -> active = true
         // disable -> active = false
@@ -158,16 +171,17 @@ namespace TP04_Project
         {
             this.comboBoxEdge.Enabled = actived;
         }
-        
-        // When the user click on the Clear button
-        // It will set the two combobox on 'None'
-        // Enable the filter combobox and disable the edge combobox
-        private void Clear()
+
+        private void SetButtonClearActive(bool actived)
         {
-            SetComboboxEdgeActive(false);
-            SetComboboxFilterActive(true);
-            comboBoxEdge.SelectedIndex = 0;
-            comboBoxFilter.SelectedIndex = 0;
+            this.btnClear.Enabled = actived;
         }
+
+        private void SetButtonSaveActive(bool actived)
+        {
+            this.btnSave.Enabled = actived;
+        }
+
+
     }
 }

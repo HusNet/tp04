@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            // Initialize COmponent
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBoxForImageLoaded = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForImageLoaded)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnLoad
+            // Button Load
             // 
             this.btnLoad.Location = new System.Drawing.Point(38, 486);
             this.btnLoad.Name = "btnLoad";
@@ -49,7 +50,7 @@
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
             // 
-            // btnSave
+            // Button Save
             // 
             this.btnSave.Location = new System.Drawing.Point(727, 486);
             this.btnSave.Name = "btnSave";
@@ -58,6 +59,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            this.btnSave.Enabled = false;
             // 
             // pictureBoxForImageLoaded
             // 
@@ -69,7 +71,7 @@
             this.pictureBoxForImageLoaded.TabStop = false;
             this.pictureBoxForImageLoaded.Click += new System.EventHandler(this.PictureBoxForImageLoaded_Click);
             // 
-            // comboBoxFilter
+            // comboBox Filter
             // 
             this.comboBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFilter.Enabled = false;
@@ -84,7 +86,7 @@
             this.comboBoxFilter.TabIndex = 10;
             this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFilter_SelectedIndexChanged);
             // 
-            // comboBoxEdge
+            // comboBox Edge
             // 
             this.comboBoxEdge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEdge.Enabled = false;
@@ -100,7 +102,7 @@
             this.comboBoxEdge.TabIndex = 11;
             this.comboBoxEdge.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEdge_SelectedIndexChanged);
             // 
-            // labelFilter
+            // label Filter
             // 
             this.labelFilter.AutoSize = true;
             this.labelFilter.Location = new System.Drawing.Point(229, 486);
@@ -109,7 +111,7 @@
             this.labelFilter.TabIndex = 12;
             this.labelFilter.Text = "Filter";
             // 
-            // labelEdge
+            // label Edge
             // 
             this.labelEdge.AutoSize = true;
             this.labelEdge.Location = new System.Drawing.Point(475, 485);
@@ -118,7 +120,7 @@
             this.labelEdge.TabIndex = 13;
             this.labelEdge.Text = "Edge";
             // 
-            // btnClear
+            // Button clear
             // 
             this.btnClear.Location = new System.Drawing.Point(802, 177);
             this.btnClear.Name = "btnClear";
@@ -127,6 +129,7 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            this.btnClear.Enabled = false;
             // 
             // ImageDetectionTP04
             // 
