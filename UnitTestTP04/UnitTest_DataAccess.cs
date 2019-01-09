@@ -15,6 +15,20 @@ namespace UnitTestTP04
     public class UnitTest_DataAccess
     {
 
+        private TestContext testContextInstance;
+
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         public TestContext TestContextInstance { get; set; }
 
         private Input input = new Input();
