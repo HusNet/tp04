@@ -182,6 +182,5 @@ namespace TP04_Project
             this.btnSave.Enabled = actived;
         }
 
-
     }
 }
