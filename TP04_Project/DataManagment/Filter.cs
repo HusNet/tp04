@@ -36,7 +36,6 @@ namespace TP04_Project.DataManagment
                 {
                     for (int x = 0; x < selectedSource.Height; x++)
                     {
-
                         if (i < (raz))
                         {
                             temp.SetPixel(i, x, Color.FromArgb(selectedSource.GetPixel(i, x).R / 5, selectedSource.GetPixel(i, x).G, selectedSource.GetPixel(i, x).B));

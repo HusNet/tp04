@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace TP04_Project.DataManagment
 {
-    // Class Filter Manager : Manage the Rainbow and the Black and White filters
+    // Class Filter Manager : Manage the 'Rainbow' and the 'Black and White' filters
     public class FilterManager 
     {
         // Return a bitmap with the correct filter selected on it
@@ -27,7 +27,7 @@ namespace TP04_Project.DataManagment
                         bitmapApplyFilter = ifilter.RainbowFilter(selectedSource);
                         break;
 
-                    // Black and White :  apply the Black and white filter on the bitmap
+                    // Black and White : apply the Black and white filter on the bitmap
                     case "Black and White":
                         bitmapApplyFilter = ifilter.BlackAndWhiteFilter(selectedSource);
                         break;

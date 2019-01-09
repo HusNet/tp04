@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace TP04_Project.DataManagment
 {
-    // Class Edge Manager : Manage the Edge Prewitt and Kirsch
+    // Class Edge Manager : Manage the Edge 'Prewitt' and 'Kirsch'
     public class EdgeManager
     {
         // Return a Bitmap with the edge selected by the user

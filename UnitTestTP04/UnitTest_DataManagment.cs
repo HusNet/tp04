@@ -35,7 +35,7 @@ namespace UnitTestTP04
         private EdgeManager edgeManager = new EdgeManager();
         private FilterManager filterManager = new FilterManager();
 
-        // path for images
+        // path for all images
         private string pathIceland;
         private string pathIceland_BlackAndWhite;
         private string pathIceland_Rainbow;
@@ -60,14 +60,14 @@ namespace UnitTestTP04
 
         // ******************** TEST FILTER ********************
 
-        // Test if the get and the set works correctly
+        // Test if the get and the set for filters works correctly
         [TestMethod]
         public void TestFilter_GetSetFilterName()
         {
             // Substitute of the interface Filter
             var filterSub = Substitute.For<IInterfaceFilter>();
             // Give a new Name to the filter
-            string newName = "new filter name";
+            string newName = "Rainbow";
             // Give to the filterSub the new name
             filterSub.GetFilterName().Returns<string>(newName);
             // Set the filter with the new name
@@ -84,7 +84,7 @@ namespace UnitTestTP04
             var filterSub = Substitute.For<Filter>();
 
             // Create the image with Rainbow applied using the correct path
-            Bitmap bitmapR = new Bitmap(pathIceland_Rainbow);
+            Bitmap bitmapRainbow = new Bitmap(pathIceland_Rainbow);
 
             // Create a bitmap with the path of the original image
             Bitmap bitmapResult = new Bitmap(pathIceland);
@@ -92,7 +92,7 @@ namespace UnitTestTP04
             bitmapResult = filterSub.RainbowFilter(bitmapResult);
 
             // Compare the pixels of the 2 bitamps to check if they are the same
-            comparePixelImages(bitmapR, bitmapResult);
+            comparePixelImages(bitmapRainbow, bitmapResult);
 
         }
 
@@ -103,8 +103,8 @@ namespace UnitTestTP04
             // Create a substitute of filter
             var filterSub = Substitute.For<Filter>();
 
-            // Create the bitmap with black and white filter applied using the correct path
-            Bitmap bitmapBW = new Bitmap(pathIceland_BlackAndWhite);
+            // Create the bitmap with black and white filter applied
+            Bitmap bitmapBlackWhite = new Bitmap(pathIceland_BlackAndWhite);
 
             // Create a bitmap with the path of the original image
             Bitmap bitmapResult = new Bitmap(pathIceland);
@@ -112,16 +112,16 @@ namespace UnitTestTP04
             bitmapResult = filterSub.BlackAndWhiteFilter(bitmapResult);
                  
             // Compare the pixels of the 2 bitamps
-            comparePixelImages(bitmapBW, bitmapResult);
+            comparePixelImages(bitmapBlackWhite, bitmapResult);
 
         }
 
-        // Test with the none filter works correctly
+        // Test if the none filter works correctly
         [TestMethod]
-        public void TestFilter_NoneFilter()
+        public void TestFilter_NoneFilterManager()
         {
             // Create the bitmap with No filter applied using the correct path
-            Bitmap bitmapBW = new Bitmap(pathIceland);
+            Bitmap bitmapNone = new Bitmap(pathIceland);
 
             // Set filter name 'None'
             iFilter.SetFilterName("None");
@@ -132,15 +132,14 @@ namespace UnitTestTP04
             bitmapResult = filterManager.ApplyFilter(bitmapResult, iFilter);
 
             // Compare the pixels of the 2 bitamps to check if they are the same
-            comparePixelImages(bitmapBW, bitmapResult);
+            comparePixelImages(bitmapNone, bitmapResult);
 
         }
     
-        // Test when the bitmap and the filter are null
+        // Test the exception when the bitmap and the filter are null
         [TestMethod]
         public void TestFilter_NullBitmapNullFilter()
-        {
-           
+        {           
             // Create a null bitmap
             Bitmap bitmapNull = null;
            
@@ -151,7 +150,7 @@ namespace UnitTestTP04
             Assert.AreEqual(bitmapNull, null);
         }
 
-        // Test the Black and White filter on a null bitmap
+        // Test the exception with the Black and White filter on a null bitmap
         [TestMethod]
         public void TestFilter_NullBitmapBlackAndWhiteFilter()
         {
@@ -159,46 +158,84 @@ namespace UnitTestTP04
             var filterSub = Substitute.For<Filter>(); 
 
             // Create a null bitmap
-            Bitmap bitmapBW = null;
+            Bitmap bitmapBlackWhite = null;
 
-            // Force to throw an exception
+            // Force to throw an exception when a null bitmap is used to apply the black and white filter
             filterSub.When(x => x.BlackAndWhiteFilter(null)).Do(x => { throw new System.Exception("Null Nitmap"); });
 
             // Apply the black and white filter on a null bitmap
-            bitmapBW = filterSub.BlackAndWhiteFilter(bitmapBW);
+            bitmapBlackWhite = filterSub.BlackAndWhiteFilter(bitmapBlackWhite);
 
             // Check if result is null
-            Assert.AreEqual(bitmapBW, null);
+            Assert.AreEqual(bitmapBlackWhite, null);
         }
 
-        // Test the Rainbow filter on a null bitmap
+        // Test the exception with the Rainbow filter on a null bitmap
         [TestMethod]
         public void TestFilter_NullBitmapRainbowFilter()
         {
             // Create a substitute of filter
-            var filterSubR = Substitute.For<Filter>();
+            var filterSub = Substitute.For<Filter>();
 
             // Create a null bitmap
-            Bitmap bitmapRB = null;
+            Bitmap bitmapRainbow = null;
 
-            // Force to throw an exception
-            filterSubR.When(x => x.RainbowFilter(null)).Do(x => { throw new System.Exception("Null Nitmap"); });
+            // Force to throw an exception when a null bitmap is used to apply the rainbow filter
+            filterSub.When(x => x.RainbowFilter(null)).Do(x => { throw new System.Exception("Null Nitmap"); });
 
             // Apply Rainbow filter on null bitmap
-            bitmapRB = filterSubR.RainbowFilter(bitmapRB);
+            bitmapRainbow = filterSub.RainbowFilter(bitmapRainbow);
 
             // Check if result is null
-            Assert.AreEqual(bitmapRB, null);
+            Assert.AreEqual(bitmapRainbow, null);
 
         }
 
-      
+        // Test the filter manager with Black and White 
+        [TestMethod]
+        public void TestFilter_BlackAndWhiteFilterManager()
+        {
+            // Create the bitmap with black and white filter already applied
+            Bitmap bitmapBlackWhite = new Bitmap(pathIceland_BlackAndWhite);
+
+            // Set filter name 'Black and white'
+            iFilter.SetFilterName("Black and White");
+
+            // Create a bitmap with the path of the original image
+            Bitmap bitmapResult = new Bitmap(pathIceland);
+            // Apply the filter directly on the bitmap 
+            bitmapResult = filterManager.ApplyFilter(bitmapResult, iFilter);
+
+            // Compare the pixels of the 2 bitamps to check if they are the same
+            comparePixelImages(bitmapBlackWhite, bitmapResult);
+
+        }
+
+        // Test the filter manager with Rainbow
+        [TestMethod]
+        public void TestFilter_RainbowFilterManager()
+        {
+            // Create the bitmap with Rainbow filter already applied
+            Bitmap bitmapRainbow = new Bitmap(pathIceland_Rainbow);
+
+            // Set filter name 'Rainbow'
+            iFilter.SetFilterName("Rainbow");
+
+            // Create a bitmap with the path of the original image
+            Bitmap bitmapResult = new Bitmap(pathIceland);
+            // Apply the filter directly on the bitmap 
+            bitmapResult = filterManager.ApplyFilter(bitmapResult, iFilter);
+
+            // Compare the pixels of the 2 bitamps to check if they are the same
+            comparePixelImages(bitmapRainbow, bitmapResult);
+
+        }
 
 
 
         // ******************** TEST EDGE ********************
 
-            // Test if the get and the set works correctly
+        // Test if the get and the set works correctly
         [TestMethod]
         public void TestEdge_GetSetEdgeName()
         {
@@ -206,7 +243,7 @@ namespace UnitTestTP04
             var edgeSub = Substitute.For<IInterfaceEdge>();
 
             // Define a new name
-            string newName = "new edge name";
+            string newName = "Prewitt";
 
             // Give the new name for the substitute
             edgeSub.GetEdgeName().Returns<string>(newName);
@@ -220,14 +257,15 @@ namespace UnitTestTP04
         }
 
         // Test the Prewitt Edge
+        // The prewitt Edge is tested on a image with Rainbow filter already on it
         [TestMethod]
         public void TestEdge_Prewitt()
         {
             // Substitute for the interface Edge
             var edgeSub = Substitute.For<Edge>();
 
-            // Create the image with Prewitt Edge applied using the correct path
-            Bitmap bitmapP = new Bitmap(pathIceland_Prewitt);
+            // Create the image with Prewitt Edge applied using the correct path 
+            Bitmap bitmapPrewitt = new Bitmap(pathIceland_Prewitt);
 
             // Create a bitmap with the path of the image with Rainbow filter already applied
             Bitmap bitmapResult = new Bitmap(pathIceland_Rainbow);
@@ -235,11 +273,12 @@ namespace UnitTestTP04
             bitmapResult = edgeSub.PrewittEdge(bitmapResult);
 
             // Compare the 2 pixels of the bitmap to check if they are the same
-            comparePixelImages(bitmapP, bitmapResult);
+            comparePixelImages(bitmapPrewitt, bitmapResult);
 
         }
 
         // Test the Kirsch Edge
+        // The Kirsch Edge is tested on a image with Rainbow filter already on it
         [TestMethod]
         public void TestEdge_Kirsch()
         {
@@ -247,7 +286,7 @@ namespace UnitTestTP04
             var edgeSub = Substitute.For<Edge>();
 
             // Create the image with Kirsch Edge applied using the correct path
-            Bitmap bitmapK = new Bitmap(pathIceland_Kirsch);
+            Bitmap bitmapKirsch = new Bitmap(pathIceland_Kirsch);
 
             // Set the correct edge 'Kirsch'
             iEdge.SetEdgeName("Kirsch");
@@ -258,16 +297,17 @@ namespace UnitTestTP04
             bitmapResult = edgeSub.KirschEdge(bitmapResult);
 
             // Compare the 2 pixels of the bitmap to check if they are the same
-            comparePixelImages(bitmapK, bitmapResult);
+            comparePixelImages(bitmapKirsch, bitmapResult);
 
         }
 
         // Check the 'None' Edge
+        // The original bitmap in this cas is an image with the rainbow filter already applied on it
         [TestMethod]
-        public void TestEdge_NoneEdge()
+        public void TestEdge_NoneEdgeManager()
         {
-            // Create the image with black Rainbow Filter applied using the correct path as original image
-            Bitmap bitmapN = new Bitmap(pathIceland_Rainbow);
+            // Create the image with Rainbow Filter applied as original bitmap
+            Bitmap bitmapNone = new Bitmap(pathIceland_Rainbow);
 
             // Set the correct edge 'None' 
             iEdge.SetEdgeName("None");
@@ -278,11 +318,11 @@ namespace UnitTestTP04
             bitmapResult = edgeManager.ApplyEdge(bitmapResult, iEdge);
 
             // Compare the 2 pixels of the bitmap if they are the same
-            comparePixelImages(bitmapN, bitmapResult);
+            comparePixelImages(bitmapNone, bitmapResult);
 
         }
 
-        // Test the prewitt edge on null bitmap
+        // Test the exception with the prewitt edge on null bitmap
         [TestMethod]
         public void TestEdge_NullBitmapPrewittEdge()
         {
@@ -290,19 +330,19 @@ namespace UnitTestTP04
             var edgeSub = Substitute.For<Edge>();
 
             // Create a null bitmap
-            Bitmap bitmapP = null;
+            Bitmap bitmapPrewitt = null;
 
-            // Force to throw an exception
+            // Force to throw an exception when apply the prewitt edge on a null bitmap
             edgeSub.When(x => x.PrewittEdge(null)).Do(x => { throw new System.Exception("Null Nitmap"); });
 
             // Apply the Prewitt edge on null bitmap
-            bitmapP = edgeSub.PrewittEdge(bitmapP);
+            bitmapPrewitt = edgeSub.PrewittEdge(bitmapPrewitt);
             
             // Check if the result is null
-            Assert.AreEqual(bitmapP, null);
+            Assert.AreEqual(bitmapPrewitt, null);
         }
 
-        // Test to apply the Kirsch edge on null bitmap
+        // Test the exception with Kirsch edge on null bitmap
         [TestMethod]
         public void TestEdge_NullBitmapKirschEdge()
         {
@@ -310,16 +350,16 @@ namespace UnitTestTP04
             var edgeSub = Substitute.For<Edge>();
 
             // Create a null bitmap
-            Bitmap bitmapK = null;
+            Bitmap bitmapKirsch = null;
 
-            // Force to throw an exception
+            // Force to throw an exception when apply the kirsch edge on a null bitmap
             edgeSub.When(x => x.KirschEdge(null)).Do(x => { throw new System.Exception("Null Nitmap"); });
 
             // Apply the Kirsch edge on null bitmap
-            bitmapK = edgeSub.KirschEdge(bitmapK);
+            bitmapKirsch = edgeSub.KirschEdge(bitmapKirsch);
 
             // Check if the result is null
-            Assert.AreEqual(bitmapK, null);
+            Assert.AreEqual(bitmapKirsch, null);
         }
         
         // Test the apply edge with null filter and null bitmap
@@ -337,8 +377,50 @@ namespace UnitTestTP04
         }
 
 
+        // Test the edge manager with Prewitt
+        [TestMethod]
+        public void TestFilter_PrewittEdgeManager()
+        {
+            // Create the bitmap with the prewitt edge applied 
+            Bitmap bitmapPrewitt = new Bitmap(pathIceland_Prewitt);
+
+            // Set filter name 'Prewitt'
+            iEdge.SetEdgeName("Prewitt");
+
+            // Create a bitmap with Rainbow filter as  original image
+            Bitmap bitmapResult = new Bitmap(pathIceland_Rainbow);
+            // Apply the filter directly on the bitmap 
+            bitmapResult = edgeManager.ApplyEdge(bitmapResult, iEdge);
+
+            // Compare the pixels of the 2 bitamps to check if they are the same
+            comparePixelImages(bitmapPrewitt, bitmapResult);
+
+        }
+
+
+        // Test the edge manager with Kirsch
+        [TestMethod]
+        public void TestFilter_KirschEdgeManager()
+        {
+            // Create the bitmap with kirsch edge applied using 
+            Bitmap bitmapKirsch = new Bitmap(pathIceland_Kirsch);
+
+            // Set filter name 'Kirsch'
+            iEdge.SetEdgeName("Kirsch");
+
+            // Create a bitmap with rainbow filter as the original image
+            Bitmap bitmapResult = new Bitmap(pathIceland_Rainbow);
+            // Apply the filter directly on the bitmap 
+            bitmapResult = edgeManager.ApplyEdge(bitmapResult, iEdge);
+
+            // Compare the pixels of the 2 bitamps to check if they are the same
+            comparePixelImages(bitmapKirsch, bitmapResult);
+
+        }
+
+
         // ******************** COMPARE PIXELS ********************
-        
+
         //Compare all pixel of two images
         public void comparePixelImages(Bitmap bitmapModified, Bitmap bitmapResult)
         {

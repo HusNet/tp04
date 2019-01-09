@@ -12,7 +12,7 @@ namespace TP04_Project
         // Bitmap loaded from the user
         private Bitmap loadedImage = null;
 
-        // Current bitmaps for filters and edge
+        // Current bitmap for filter and edge
         private Bitmap currentBitmapFilter = null;
         private Bitmap currentBitmapEdge = null;
 
@@ -99,7 +99,7 @@ namespace TP04_Project
             }
         }
 
-        // Manage the combo box for the edges
+        // Manage the combo box for the edge
         // Apply the Edge when one is selected
         private void ComboBoxEdge_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -28,7 +28,7 @@ namespace TP04_Project.DataManagment
         {
             try
             {
-                // Apply the Kirsch edge on the bitmap selectedSource in parameter
+                // Apply the Kirsch edge on the bitmap with selectedSource in parameter
                 // And store the result in resultBitmap
                 Bitmap resultBitmap = ExtBitmap.ConvolutionEdge(selectedSource,
                                                GetKirsch3x3Horizontal(),
@@ -48,12 +48,12 @@ namespace TP04_Project.DataManagment
 
         }
 
-        //   // Return a bitmap with the Kirsch edge applied on it
+        //  Return a bitmap with the Prewitt edge applied on it
         public Bitmap PrewittEdge(Bitmap selectedSource, bool grayscale = true)
         {
             try
             {
-                // Apply the Prewitt edge on the bitmap selectedSource in parameter
+                // Apply the Prewitt edge on the bitmap with selectedSource in parameter
                 // And store the result in resultBitmap
                 Bitmap resultBitmap = ExtBitmap.ConvolutionEdge(selectedSource,
                                              GetPrewitt3x3Horizontal(),
@@ -71,7 +71,7 @@ namespace TP04_Project.DataManagment
             }
         }
 
-        // Get a double Value to make the Prewitt filter
+        // Get a double Value to make the Prewitt filter (Horizontal)
         public double[,] GetPrewitt3x3Horizontal()
         {
             return new double[,]
@@ -82,7 +82,7 @@ namespace TP04_Project.DataManagment
             };
         }
 
-        // Get a double Value to make the Prewitt filter
+        // Get a double Value to make the Prewitt filter (Vertical
         public double[,] GetPrewitt3x3Vertical()
         {
             return new double[,]
@@ -93,7 +93,7 @@ namespace TP04_Project.DataManagment
             };
         }
 
-        // Get a double Value to make the Kirsch filter
+        // Get a double Value to make the Kirsch filter (Horizontal)
         public double[,] GetKirsch3x3Horizontal()
         {
             return new double[,]
@@ -105,7 +105,7 @@ namespace TP04_Project.DataManagment
         }
 
 
-        // Get a double Value to make the Kirsch filter
+        // Get a double Value to make the Kirsch filter (Vertical)
         public double[,] GetKirsch3x3Vertical()
         {
             return new double[,]
